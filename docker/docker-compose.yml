@@ -1,0 +1,45 @@
+version: "3.2"
+services:
+  php:
+    build: './php/'
+    container_name: php
+    networks:
+      - dufftie-net
+    volumes:
+      - ../:/var/www/html/
+
+  apache:
+    build: './apache/'
+    container_name: web
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - dufftie-net
+    ports:
+      - "8080:80"
+    volumes:
+      - ../:/var/www/html/
+
+  mysql:
+    image: mysql:5.6.40
+    container_name: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - dufftie-net
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "dufftie"
+      MYSQL_USER: "dev"
+      MYSQL_PASSWORD: "secret"
+      
+networks:
+  dufftie-net:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local
