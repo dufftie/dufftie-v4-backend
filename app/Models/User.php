@@ -2,16 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Lumen\Auth\Authorizable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model
 {
-    use Authenticatable, Authorizable, HasFactory;
+    protected $table = 'users';
+
+    const USERNAME = 'username';
+    const PASSWORD = 'password';
+    const NAME = 'name';
+    const SURNAME = 'surname';
+    const SEX = 'sex';
+    const EMAIL = 'email';
+    const PROFILE_IMAGE = 'profileImage';
+    const DESCRIPTION = 'description';
+    const LOCATION = 'location';
+    const LINKS = 'links';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +27,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        User::USERNAME,
+        User::NAME,
+        User::SURNAME,
+        User::SEX,
+        User::EMAIL,
+        User::PROFILE_IMAGE,
+        User::DESCRIPTION,
+        User::LINKS,
+        User::CREATED_AT,
+        User::UPDATED_AT,
     ];
 
     /**
@@ -28,6 +45,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'password',
+        User::PASSWORD,
     ];
 }
