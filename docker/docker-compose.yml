@@ -32,10 +32,10 @@ services:
       - dufftie-net
     environment:
       MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: "dufftie"
+      MYSQL_DATABASE: "dufftiev4"
       MYSQL_USER: "dev"
       MYSQL_PASSWORD: "secret"
-      
+
 networks:
   dufftie-net:
     driver: bridge
