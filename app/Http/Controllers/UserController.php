@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
-use Laravel\Lumen\Routing\Controller as BaseController;
 
 class UserController extends BaseController
 {
@@ -22,15 +20,6 @@ class UserController extends BaseController
         }
         $responseBody = $user->toJson();
         $this->logInfo("Loaded info for user: '$username'.", ['Response body', $responseBody]);
-        return new Response($user->toJson(), 400);
-    }
-
-    /**
-     * @param string $text
-     * @param array $context
-     */
-    protected function logInfo(string $text, array $context = [])
-    {
-        Log::channel('daily')->info($text, $context);
+        return new Response($user->toJson(), 200);
     }
 }
