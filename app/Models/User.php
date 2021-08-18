@@ -28,6 +28,7 @@ class User extends Model
      */
     protected $fillable = [
         User::USERNAME,
+        User::PASSWORD,
         User::NAME,
         User::SURNAME,
         User::SEX,
