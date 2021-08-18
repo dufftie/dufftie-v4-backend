@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 
 class UserController extends BaseController
 {
-    public function getUserPageInfo($username)
+    public function getUserPageInfo($username): Response
     {
         /**
          * @var User $user
