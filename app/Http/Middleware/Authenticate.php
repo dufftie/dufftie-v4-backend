@@ -24,8 +24,11 @@ class Authenticate
         }
 
         $userToken = $request->header('userToken');
+        $context = [
+            'headers' => $request->headers
+        ];
         if (empty($userToken)) {
-            $this->logConnection('User was blocked due to empty AuthToken.');
+            $this->logConnection('User was blocked due to empty AuthToken.', $context);
             return $this->outputUnauthorizedResponse();
         }
 
@@ -38,7 +41,7 @@ class Authenticate
             }
         }
 
-        $this->logConnection("User was blocked due to unsuitable token: '$userToken'");
+        $this->logConnection("User was blocked due to unsuitable token: '$userToken'", $context);
         return $this->outputUnauthorizedResponse();
     }
 
@@ -59,11 +62,12 @@ class Authenticate
     }
 
     /**
-     * @param $text
+     * @param string $text
+     * @param array|null $context
      */
-    protected function logConnection($text)
+    protected function logConnection(string $text, array $context = [])
     {
-        Log::channel('daily')->info($text);
+        Log::channel('daily')->info($text, $context);
     }
 
     /**
