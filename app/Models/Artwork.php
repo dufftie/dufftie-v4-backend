@@ -8,6 +8,7 @@ class Artwork extends Model
 {
     protected $table = 'artwork';
 
+    const ID = 'id';
     const NAME = 'name';
     const TITLE = 'title';
     const DESCRIPTION = 'description';
@@ -25,6 +26,7 @@ class Artwork extends Model
      * @var array
      */
     protected $fillable = [
+        Artwork::ID,
         Artwork::NAME,
         Artwork::TITLE,
         Artwork::DESCRIPTION,
