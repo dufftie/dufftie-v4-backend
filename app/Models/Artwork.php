@@ -4,6 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * ToDo: Add $body for Artwork class
+ */
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $title
+ * @property string $description
+ * @property string $publishDate
+ * @property string $daysSpent
+ * @property string $preview
+ * @property string $bgColor
+ * @property boolean $hidden
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Artwork extends Model
 {
     protected $table = 'artwork';
