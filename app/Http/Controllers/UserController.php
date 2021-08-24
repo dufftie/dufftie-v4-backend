@@ -20,6 +20,6 @@ class UserController extends BaseController
         }
         $responseBody = $user->toJson();
         $this->logInfo("Loaded info for user: '$username'.", ['Response body', $responseBody]);
-        return new Response($user->toJson(), 200);
+        return new Response($responseBody, 200);
     }
 }
